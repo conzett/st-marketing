@@ -5530,6 +5530,7 @@ a.badge:hover {
 }
 html,
 body {
+  height: 100%;
   min-height: 100%;
 }
 #wrapper {
@@ -5544,14 +5545,14 @@ footer {
   clear: both;
 }
 body {
-  background-color: #f3f3f3;
-  background-image: -moz-linear-gradient(top, #f1f1f1, #f5f5f5);
-  background-image: -ms-linear-gradient(top, #f1f1f1, #f5f5f5);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), to(#f5f5f5));
-  background-image: -webkit-linear-gradient(top, #f1f1f1, #f5f5f5);
-  background-image: -o-linear-gradient(top, #f1f1f1, #f5f5f5);
-  background-image: linear-gradient(top, #f1f1f1, #f5f5f5);
-  background-repeat: repeat-x;
+  background-color: #f5f5f5;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), color-stop(600px, #f5f5f5), to(#f5f5f5));
+  background-image: -webkit-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
+  background-image: -moz-linear-gradient(top, #f1f1f1, #f5f5f5 600px, #f5f5f5);
+  background-image: -ms-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
+  background-image: -o-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
+  background-image: linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
+  background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#f5f5f5', GradientType=0);
 }
 header {
