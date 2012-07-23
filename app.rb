@@ -18,6 +18,7 @@ DataMapper.auto_upgrade!
 class Website < Sinatra::Base
 
   helpers do
+
     def put_stylesheet(style)
       result = ""
       unless style.nil? or style.empty?
@@ -33,6 +34,18 @@ class Website < Sinatra::Base
       return result;
     end
 
+    # Basic authentication
+    def protected!
+      unless authorized?
+        response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+        throw(:halt, [401, "Not Authorized"])
+      end
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['taivara','taivara']
+    end
   end
 
   get '/' do
@@ -56,8 +69,8 @@ class Website < Sinatra::Base
     end
   end
 
-  #Listing email for debugging - should be removed before going to prod
   get '/email' do
+    protected!
     result = <<RESULT
 <div class='container'>
 <div class='row'>
