@@ -57,7 +57,9 @@
     #submitted { display: none; p {color: #468847;}}
 
     form {
-        margin-top: 2em;
+        @media (min-width: 768px) {
+            margin-top: 2em;
+        }
 
         label {
             line-height: 1;
@@ -88,6 +90,7 @@
                 background-position: 0 -48px;
             }
         }
+
     }
 
     @media (min-width: 480px) and (max-width: 767px) {

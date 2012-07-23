@@ -91,8 +91,10 @@
 #overview #submitted p {
   color: #468847;
 }
-#overview form {
-  margin-top: 2em;
+@media (min-width: 768px) {
+  #overview form {
+    margin-top: 2em;
+  }
 }
 #overview form label {
   line-height: 1;
