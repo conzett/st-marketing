@@ -33,8 +33,15 @@
     <header>
         <div class='container'>
             <div class='row'>
-                <div id='logo' class='span12'>
+                <div id='logo' class='span3'>
                     <img src='img/logo.png' alt='StatRoom' />
+                </div>
+                <div id='tagline' class='span9'>
+                    <p>
+                        <a href="#" title="Follow us on Twitter"><img src="img/twitter.png" alt="" /></a>
+                        <a href="#" title="Like us on Facebook"><img src="img/facebook.png" alt="" /></a>
+                    </p>
+                    <p>For Coaches, Athletes, Fans, and Parents</p>
                 </div>
             </div>
         </div>
@@ -50,7 +57,7 @@
     <div class='container'>
         <div class='row'>
             <div class='span7'>
-                <p>Copyright &copy; 2012 StatRoom.</p>
+                <p>2012 StatRoom Copyright &copy;</p>
             </div>
         </div>
     </div>
@@ -62,6 +69,7 @@
 <script src="js/libs/bootstrap/bootstrap.min.js"></script>
 
 <script src="js/script.js"></script>
+<%= @script ? @script : "" %> 
 
 </body>
 </html>

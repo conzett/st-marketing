@@ -644,3 +644,31 @@
   }
 
 }
+
+//Custom grid
+#custom {   
+    .grid(@gridColumnWidth, @gridGutterWidth){   //Generate our custom grid
+        //Define styles for our custom grid (same as normal, but added width=auto version
+        .span (@columns) when(isNumber(@gridColumnWidth)){ 
+            width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+            float: left;
+            margin-left: @gridGutterWidth;
+        }
+        .span (@columns) when(@gridColumnWidth = auto){ 
+            float: none;
+            display: block;
+            width: auto;
+            margin: 0;
+        }
+        .row() {
+            margin-left: @gridGutterWidth * -1;
+            .clearfix();
+        }
+        .row() when(@gridColumnWidth = auto){ 
+            margin-left: 0;
+        }
+        .offset (@columns) {
+            margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+        }
+    }
+}

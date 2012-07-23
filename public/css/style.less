@@ -24,12 +24,38 @@ footer {
 } 
 // =====================================
 
+@orange: #f69a2b;
+
 body {
     #gradient > .vertical-three-colors(#f1f1f1, @bodyBackground, 600px, @bodyBackground);
 }
 
 header {
-    padding: 30px 0;
+
+    #logo img {
+        margin: 30px 0;
+    }
+
+    #tagline {
+        text-align: right;
+        color: @orange;
+        font-style: italic;
+        font-size: 21px;
+
+        p {
+            margin: 20px 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        #logo img {
+            margin: 30px 0 0;
+        }
+
+        #tagline {
+            p { margin-top: 0}
+        }
+    }
 }
 
 footer {
@@ -37,4 +63,9 @@ footer {
         padding-top: 10px;
         border-top: 1px solid @grayLight;
     }
+
+    font-family: Impact, Charcoal, sans-serif;
+    text-transform: uppercase;
+    color: @gray;
 }
+

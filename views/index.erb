@@ -1,8 +1,79 @@
 <div class='container'>
-    <div class='row' id='box'>
-        <div class='shadow'></div>
-        <div class='span12'>
-            <img src='http://placehold.it/300x900' />
+    <div id='box'>
+        <div class='row'>
+
+            <!-- Overview -->
+
+            <div class='span6 hidden-phone'>
+                <img src='img/screenshot.png' alt=''/>
+            </div>
+            <div id='overview' class='span6'>
+                <div id='copy'>
+                    <h1>Everything you need to manage your sports life, all in one place.</h1>
+                    <p>Join the best social media site designed just<br />for athletes and the sports community.</p>
+                </div>
+                <div id='emailForm'>
+                    <form id="submitEmail">
+                        <label for="name">Name: </label>
+                        <input type="text" name="name" id="name"/>
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="email"/><br />
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                    <div id='submitted' class='alert alert-success'>
+                        <p id='msg'></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- Features list -->
+        <div class='row' id='features'>
+            <div class='span12'>
+                <h1>Don't you wish you could:</h1>
+            </div>
+            <div class='feature span2'>
+                <img src="img/camera.png" alt="" />
+                share your team's photos and videos
+            </div>
+            <div class='feature span2'>
+                <img src='img/friends.png' alt='' />
+                make friends with athletes like you
+            </div>
+            <div class='feature span2'>
+                <img src='img/snack.png' alt='' />
+                find out who's bringing the snacks?
+            </div>
+            <div class='feature span2'>
+                <img src='img/achievements.png' alt='' />
+                share your achievements
+            </div>
+            <div class='feature span2'>
+                <img src='img/calendar.png' alt='' />
+                invite fans and friends to the game
+            </div>
+            <div class='feature span2'>
+                <img src='img/marker.png' alt='' />
+                maps to games and events
+            </div>
+        </div>
+    </div> <!-- close box -->
 </div>
+<%
+@script = <<JS
+<script>
+$(function() {
+
+$('#submitEmail button').click(function(e) {
+    e.preventDefault();
+    $.post('/email', $('#submitEmail').serialize(),
+    function(data) {
+        $('#submitted p').html(data);
+        $('#submitEmail').slideToggle();
+        $('#submitted').slideToggle();
+    });
+});
+});
+</script>
+JS
+%>
