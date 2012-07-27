@@ -5,7 +5,7 @@
             <!-- Overview -->
 
             <div class='span6 hidden-phone'>
-                <img src='img/screenshot.png' alt=''/>
+                <img src='img/screenshot2.png' alt=''/>
             </div>
             <div id='overview' class='span6'>
                 <div id='copy'>
@@ -18,7 +18,10 @@
                         <input type="text" name="name" id="name"/>
                         <label for="email">Email: </label>
                         <input type="email" name="email" id="email"/><br />
-                        <button type="submit" class="btn">Register</button>
+                        <div id='error' class='alert alert-error'>
+                            <p class='msg'></p>
+                        </div>
+                        <button type="submit" class="btn"><img id='spinner' src='/img/spinner.gif' alt='Loading' /> Sign Up for the Private Beta!</button>
                     </form>
                     <div id='submitted' class='alert alert-success'>
                         <p id='msg'></p>
@@ -64,13 +67,25 @@
 <script>
 $(function() {
 
+$('#spinner')
+    .ajaxStart(function() { $(this).show(); })
+    .ajaxStop(function() { $(this).hide(); });
+
+$('#error').ajaxError(function(event, res) {
+    console.log(res);
+    $('#error p').html(res.responseText);
+    $('#error').slideUp(100).slideDown(300);
+});
+
 $('#submitEmail button').click(function(e) {
     e.preventDefault();
+
     $.post('/email', $('#submitEmail').serialize(),
-    function(data) {
-        $('#submitted p').html(data);
-        $('#submitEmail').slideToggle();
-        $('#submitted').slideToggle();
+        function(data, status, jqXHR) {
+            $('#submitted p').html(data);
+            $('#submitEmail').slideToggle();
+            $('#submitted').slideToggle();
+            console.log(jqXHR);
     });
 });
 });

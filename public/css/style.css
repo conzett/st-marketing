@@ -6006,24 +6006,20 @@ footer {
   clear: both;
 }
 body {
-  background-color: #f5f5f5;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), color-stop(600px, #f5f5f5), to(#f5f5f5));
-  background-image: -webkit-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
-  background-image: -moz-linear-gradient(top, #f1f1f1, #f5f5f5 600px, #f5f5f5);
-  background-image: -ms-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
-  background-image: -o-linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
-  background-image: linear-gradient(#f1f1f1, #f5f5f5 600px, #f5f5f5);
-  background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#f5f5f5', GradientType=0);
+  background-image: -webkit-linear-gradient(left, rgba(245, 245, 245, 0) 0%, #f5f5f5 25%, #f5f5f5 75%, rgba(245, 245, 245, 0)), url('/img/background.png');
+  background-image: -moz-linear-gradient(left, rgba(245, 245, 245, 0) 0%, #f5f5f5 25%, #f5f5f5 75%, rgba(245, 245, 245, 0)), url('/img/background.png');
+  background-image: -o-linear-gradient(left, rgba(245, 245, 245, 0) 0%, #f5f5f5 25%, #f5f5f5 75%, rgba(245, 245, 245, 0)), url('/img/background.png');
+  background-image: -ms-linear-gradient(left, rgba(245, 245, 245, 0) 0%, #f5f5f5 25%, #f5f5f5 75%, rgba(245, 245, 245, 0)), url('/img/background.png');
+  background-image: linear-gradient(left, rgba(245, 245, 245, 0) 0%, #f5f5f5 25%, #f5f5f5 75%, rgba(245, 245, 245, 0)), url('/img/background.png');
+  background-repeat: repeat-y, repeat-x;
 }
 header #logo img {
   margin: 30px 0;
 }
 header #tagline {
   text-align: right;
-  color: #f69a2b;
-  font-style: italic;
-  font-size: 21px;
+  color: #999999;
+  font-size: 20px;
 }
 header #tagline p {
   margin: 20px 0;

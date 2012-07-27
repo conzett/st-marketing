@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'data_mapper'
+require 'gibbon'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
@@ -55,6 +56,35 @@ class Website < Sinatra::Base
   end
 
   post '/email' do
+
+    @apikey = 'b96cbe384e7275a350dc4995f82cb1af-us5'
+    @testList = 'aa0fc43b23'
+    @statRoom = '68f22152ce'
+
+    gb = Gibbon.new(@apikey)
+    subscribe = gb.listSubscribe({
+      :id => @statRoom,
+      :email_address => params[:email],
+      :merge_vars => {
+        :name => params[:name],
+      }
+    })
+
+    puts subscribe.inspect
+
+    if subscribe == true
+      status 201
+      "Thank you for signing up with StatRoom. A confirmation email has been sent to #{params[:email]}."
+    else
+      if subscribe['code'] == 230 or subscribe['code'] == 214
+        halt 400, "This email address has already been used."
+      elsif subscribe['code'] == 502
+        halt 400, "This email address is not valid."
+      else
+        halt 500, "An unknown error has occured. Please try again later."
+      end
+    end
+=begin
     email = Email.new(
       :name => params[:name],
       :email => params[:email]
@@ -67,9 +97,12 @@ class Website < Sinatra::Base
       status 400
       "An error has occur while saving your email address."
     end
+=end
   end
 
   get '/email' do
+
+=begin
     protected!
     result = <<RESULT
 <div class='container'>
@@ -88,6 +121,6 @@ RESULT
 </div>
 </div>"
     erb result
+=end
   end
-
 end

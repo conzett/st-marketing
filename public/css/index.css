@@ -38,6 +38,7 @@
     -moz-border-radius: 10px 10px 0 0;
     border-radius: 10px 10px 0 0;
     background-color: white;
+    padding-top: 20px;
     background-color: #f5f5f5;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(500px, #f5f5f5), to(#f5f5f5));
     background-image: -webkit-linear-gradient(#ffffff, #f5f5f5 500px, #f5f5f5);
@@ -69,10 +70,9 @@
   padding-top: 20px;
 }
 #overview h1 {
-  font-family: Impact, Oswald, Charcoal, sans-serif;
   font-size: 34px;
   line-height: 1.2em;
-  color: #f69a2b;
+  color: #555;
   margin-bottom: 0.5em;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
@@ -85,11 +85,22 @@
   height: 0;
   line-height: 0;
 }
+#overview #error {
+  display: none;
+}
+#overview #error p {
+  color: #B94A48;
+  margin: 0px;
+}
 #overview #submitted {
   display: none;
 }
 #overview #submitted p {
   color: #468847;
+  margin: 0px;
+}
+#overview #spinner {
+  display: none;
 }
 @media (min-width: 768px) {
   #overview form {
@@ -98,25 +109,26 @@
 }
 #overview form label {
   line-height: 1;
-  font-family: Impact, Oswald, Charcoal, sans-serif;
   text-transform: uppercase;
+  font-weight: bold;
   font-size: 1.25em;
   color: #777777;
 }
 #overview form input {
-  max-width: 100%;
+  width: 75%;
+  font-size: 1.25em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 #overview form button {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  height: 48px;
-  width: 124px;
-  font-family: Impact, Oswald, Charcoal, sans-serif;
+  padding: 1em;
   font-size: 19px;
   color: white;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
   background-color: #f78706;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fb9b2d), color-stop(33%, #fa8908), to(#ec7e00));
   background-image: -webkit-linear-gradient(#fb9b2d, #fa8908 33%, #ec7e00);
@@ -146,6 +158,9 @@
     float: left;
     margin-left: 10px;
   }
+  #overview #emailForm input {
+    width: 100%;
+  }
 }
 #features {
   padding-bottom: 30px;
@@ -154,9 +169,10 @@
   border-top: 1px dotted #909090;
   padding: 1em 0 0.5em;
   text-align: center;
-  font-family: Impact, Oswald, Charcoal, sans-serif;
   color: #777777;
-  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 3em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 #features .feature {
   text-align: center;
