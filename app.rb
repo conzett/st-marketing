@@ -70,8 +70,6 @@ class Website < Sinatra::Base
       }
     })
 
-    puts subscribe.inspect
-
     if subscribe == true
       status 201
       "Thank you for signing up with StatRoom. A confirmation email has been sent to #{params[:email]}."
@@ -101,6 +99,7 @@ class Website < Sinatra::Base
   end
 
   get '/email' do
+    redirect '/'
 
 =begin
     protected!

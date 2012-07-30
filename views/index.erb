@@ -15,9 +15,9 @@
                 <div id='emailForm'>
                     <form id="submitEmail">
                         <label for="name">Name: </label>
-                        <input type="text" name="name" id="name"/>
+                        <input type="text" name="name" id="name" required='required'/>
                         <label for="email">Email: </label>
-                        <input type="email" name="email" id="email"/><br />
+                        <input type="email" name="email" id="email" required='required'/><br />
                         <div id='error' class='alert alert-error'>
                             <p class='msg'></p>
                         </div>
@@ -79,6 +79,23 @@ $('#error').ajaxError(function(event, res) {
 
 $('#submitEmail button').click(function(e) {
     e.preventDefault();
+
+    var notEmpty= true;
+
+    $('div.control-group').children().unwrap();
+    $('.help-block').remove();
+
+    $('#submitEmail input').each(function() {
+        if ($(this).val() == '') {
+            $(this).wrap('<div class="control-group error" />');
+            $(this).after("<span class='help-block'>Please fill in this field.</span>");
+            notEmpty = false;
+        }
+    });
+
+    if (!notEmpty) {
+        return;
+    }
 
     $.post('/email', $('#submitEmail').serialize(),
         function(data, status, jqXHR) {
