@@ -14,7 +14,7 @@ class Email
   property :created_at, DateTime
 end
 
-DataMapper.auto_upgrade!
+# DataMapper.auto_upgrade!
 
 class Website < Sinatra::Base
 
