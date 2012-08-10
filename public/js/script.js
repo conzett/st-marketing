@@ -40,7 +40,6 @@ $(function() {
             } else if (document.documentElement.clientWidth < 768) {
                 amountVisible = 3;
             }
-            console.log(document.documentElement.clientWidth);
             return Math.floor($wrapper.width() / amountVisible) - padding;
         };
         var padding = parseInt($features.css('padding-left'), 10) * 2;
