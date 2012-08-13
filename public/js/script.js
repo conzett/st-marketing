@@ -66,27 +66,45 @@ $(function() {
 
 
         //Click arrow
-        duration = 500;
+        duration = 500; // Duration also needs to be changed in the CSS under .move
         $right_arrow.click(function() {
             if ($features.is(':animated')) {
                 return false;
             }
-            $features.css('position', 'relative').animate({'left': 0 - width() - padding}, duration);
-            setTimeout(function() {
-                $scroller.children().eq(0).detach().appendTo($scroller);
-                $features.css({'position' : 'static', 'left' : ''});
-            }, duration);
+
+            if (Modernizr.csstransitions) {
+                $features.addClass('move').css('left', 0 - width() - padding);
+                setTimeout(function() {
+                    $scroller.children().eq(0).detach().appendTo($scroller);
+                    $features.removeClass('move').css({'position' : '', 'left' : ''});
+                }, duration);
+            } else {
+                $features.css('position', 'relative').animate({'left': 0 - width() - padding}, duration);
+                setTimeout(function() {
+                    $scroller.children().eq(0).detach().appendTo($scroller);
+                    $features.css({'position' : 'static', 'left' : ''});
+                }, duration);
+            }
+
         });
 
         $left_arrow.click(function() {
             if ($features.is(':animated')) {
                 return false;
             }
-            $features.css('position', 'relative').animate({'left': width() + padding},duration);
-            setTimeout(function() {
-                $scroller.children().last().detach().prependTo($scroller);
-                $features.css({'position' : 'static', 'left' : ''});
-            }, duration);
+            if (Modernizr.csstransitions) {
+                $features.addClass('move').css('left', width() + padding);
+                setTimeout(function() {
+                    $scroller.children().last().detach().prependTo($scroller);
+                    $features.removeClass('move').css({'position' : '', 'left' : ''});
+                }, duration);
+            } else {
+                $features.css('position', 'relative').animate({'left': width() + padding},duration);
+                setTimeout(function() {
+                    $scroller.children().last().detach().prependTo($scroller);
+                    $features.css({'position' : 'static', 'left' : ''});
+                }, duration);
+            }
         });
 
     })();
