@@ -35,11 +35,14 @@ $(function() {
         var $wrapper = $('#featuresWrapper');
         var width = function() {
             var amountVisible = 6;
-            if (document.documentElement.clientWidth < 320) {
+            if (document.documentElement.clientWidth <= 480) {
                 amountVisible = 2;
-            } else if (document.documentElement.clientWidth < 768) {
+            } else if (document.documentElement.clientWidth <= 768) {
                 amountVisible = 3;
+            } else if (document.documentElement.clientWidth <= 980) {
+                amountVisible = 4;
             }
+            console.log(amountVisible);
             return Math.floor($wrapper.width() / amountVisible) - padding;
         };
         var padding = parseInt($features.css('padding-left'), 10) * 2;
